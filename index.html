@@ -4,73 +4,210 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Keonyoung Lee - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>"
+    />
     <style>
-      body {
-        font-family: "Poppins", sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        min-height: 100vh;
+      .flip-card {
+        perspective: 1000px;
+        height: 200px;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateX(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 1rem;
+        padding: 1.5rem;
+      }
+
+      .flip-card-front {
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
         display: flex;
         align-items: center;
         justify-content: center;
       }
-      .container {
-        max-width: 800px;
-        margin: 20px;
-        background-color: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+      .flip-card-back {
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        transform: rotateX(180deg);
+        display: flex;
+        align-items: center;
       }
-      h1 {
-        color: #2d3436;
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        font-weight: 600;
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
       }
-      .interest {
-        margin-top: 30px;
-        padding: 25px;
-        background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f8 100%);
-        border-radius: 15px;
-        border-left: 5px solid #0984e3;
-      }
-      h2 {
-        color: #0984e3;
-        margin-top: 0;
-        font-size: 1.8em;
-        font-weight: 500;
-      }
-      p {
-        color: #2d3436;
-        font-size: 1.1em;
-        margin: 0;
-      }
-      .highlight {
-        color: #0984e3;
-        font-weight: 500;
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
     </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
   </head>
-  <body>
-    <div class="container">
-      <h1>Hello, I'm Keonyoung Lee</h1>
-      <div class="interest">
-        <h2>Areas of Interest</h2>
-        <p>
-          I am deeply passionate about
-          <span class="highlight">Artificial Intelligence</span> and
-          <span class="highlight">Computer Vision</span>. My focus lies in
-          exploring the fascinating intersection of these fields, where we can
-          create intelligent systems that can see and understand the world
-          around us.
-        </p>
+  <body
+    class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen font-poppins"
+  >
+    <div class="container mx-auto px-4 py-16">
+      <div
+        class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden fade-in"
+      >
+        <!-- Header Section -->
+        <div
+          class="bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-12 text-white"
+        >
+          <div class="flex items-center space-x-4 mb-4">
+            <i class="fas fa-robot text-4xl"></i>
+            <h1 class="text-4xl font-semibold">Hello, I'm Keonyoung Lee</h1>
+          </div>
+          <p class="text-blue-100 text-lg flex items-center space-x-2">
+            <i class="fas fa-code"></i>
+            <span>AI & Computer Vision Enthusiast</span>
+          </p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-8">
+          <div class="space-y-6">
+            <!-- About Section -->
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="text-center">
+                    <i
+                      class="fas fa-user-circle text-4xl text-blue-500 mb-4"
+                    ></i>
+                    <h2 class="text-2xl font-semibold text-gray-800">
+                      About Me
+                    </h2>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="space-y-4">
+                    <p class="text-gray-600 leading-relaxed">
+                      I am a passionate developer with a deep interest in
+                      Artificial Intelligence and Computer Vision.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                      My goal is to create intelligent systems that can
+                      understand and interpret visual information.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="text-center">
+                    <i class="fas fa-brain text-4xl text-indigo-500 mb-4"></i>
+                    <h2 class="text-2xl font-semibold text-gray-800">
+                      Areas of Interest
+                    </h2>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                      <i class="fas fa-microchip text-blue-500"></i>
+                      <span class="text-gray-600">Artificial Intelligence</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                      <i class="fas fa-eye text-blue-500"></i>
+                      <span class="text-gray-600">Computer Vision</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                      <i class="fas fa-network-wired text-blue-500"></i>
+                      <span class="text-gray-600">Deep Learning</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="text-center">
+                    <i
+                      class="fas fa-paper-plane text-4xl text-blue-500 mb-4"
+                    ></i>
+                    <h2 class="text-2xl font-semibold text-gray-800">
+                      Get in Touch
+                    </h2>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="space-y-3">
+                    <p class="text-gray-700 font-medium">
+                      Feel free to contact me anytime!
+                    </p>
+                    <div class="flex items-center space-x-2">
+                      <i class="fas fa-envelope text-blue-500"></i>
+                      <a
+                        href="mailto:joseph12752@gmail.com"
+                        class="text-gray-600 hover:text-blue-500 transition-colors"
+                      >
+                        joseph12752@gmail.com
+                      </a>
+                    </div>
+                    <p class="text-gray-500 text-sm italic">
+                      Looking forward to new opportunities
+                      <span class="inline-block ml-1">✨</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
